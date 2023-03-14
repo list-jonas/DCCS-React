@@ -13,7 +13,6 @@ export enum AppViews {
 }
 
 function App() {
-    const [genres, setGenres] = useState<Genre[]>(genresMockData)
     const [movies, setMovies] = useState<Movie[]>(moviesMockData)
     const [selectedView, setSelectedView] = useState<AppViews>(AppViews.MovieOverview)
     const [selectedMovie, setSelectedMovie] = useState<Movie | undefined>()
@@ -84,7 +83,7 @@ function App() {
                     movie={selectedMovie}
                     handleSave={handleMovieSave}
                     handleCancel={handleMovieCancel}
-                    genres={genres}
+                    genres={genresMockData}
                 />
             )
         }
