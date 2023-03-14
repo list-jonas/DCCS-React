@@ -1,10 +1,13 @@
 import {Movie} from "../../common/models/movie.model";
 import "./MovieDetails.styles.css"
 import {useState} from "react";
+import {Genre} from "../../common/models/genre.model";
 
 interface MovieDetailsProps {
     movie: Movie | undefined
     handleSave: (movie: Movie) => void
+    handleCancel: () => void
+    genres: Genre[]
 }
 
 const initMovie: Movie = {
@@ -16,7 +19,7 @@ const initMovie: Movie = {
 }
 
 const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
-    const { movie, handleSave } = props
+    const { movie, handleSave, handleCancel, genres } = props
     const [ formState, setFormState ] = useState<Movie>(movie ?? initMovie)
 
     const handleTitleChange = (title: string) => {
@@ -69,6 +72,11 @@ const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
                     </div>
                     <div className="movie-details-from-field">
                         <label>Genre</label>
+                        <select>
+                            {genres.map(genre => (
+                                <option key={genre.id} value={genre.id}>{genre.name}</option>
+                            ))}
+                        </select>
                     </div>
                     <div className="movie-details-from-field">
                         <label>Year</label>
@@ -101,7 +109,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = (props) => {
             </div>
 
             <div className="movie-details-button-container">
-                <button className="movie-details-cancel-button" onClick={() => {}}>Cancel</button>
+                <button className="movie-details-cancel-button" onClick={() => handleCancel}>Cancel</button>
                 <button
                     className="movie-details-save-button"
                     onClick={() => handleSave(formState)}

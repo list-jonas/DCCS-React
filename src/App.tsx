@@ -2,9 +2,10 @@ import AppHeader from "./common/components/app-header/AppHeader";
 import "./App.css"
 import React, {useState} from "react";
 import {Movie} from "./common/models/movie.model";
-import {moviesMockData} from "./common/mock-data";
+import {genresMockData, moviesMockData} from "./common/mock-data";
 import MovieOverview from "./views/movie-overview/MovieOverview";
 import MovieDetails from "./views/movie-details/MovieDetails";
+import {Genre} from "./common/models/genre.model";
 
 export enum AppViews {
   MovieOverview = 1,
@@ -12,6 +13,7 @@ export enum AppViews {
 }
 
 function App() {
+    const [genres, setGenres] = useState<Genre[]>(genresMockData)
     const [movies, setMovies] = useState<Movie[]>(moviesMockData)
     const [selectedView, setSelectedView] = useState<AppViews>(AppViews.MovieOverview)
     const [selectedMovie, setSelectedMovie] = useState<Movie | undefined>()
@@ -64,6 +66,11 @@ function App() {
         setSelectedView(AppViews.MovieOverview)
     }
 
+    const handleMovieCancel = () => {
+        setSelectedView(AppViews.MovieOverview)
+        setSelectedMovie(undefined)
+    }
+
     const renderSelectedView = () => {
         if (selectedView == AppViews.MovieOverview) {
             return <MovieOverview
@@ -76,6 +83,8 @@ function App() {
                 <MovieDetails
                     movie={selectedMovie}
                     handleSave={handleMovieSave}
+                    handleCancel={handleMovieCancel}
+                    genres={genres}
                 />
             )
         }
