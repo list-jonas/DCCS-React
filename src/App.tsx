@@ -48,6 +48,12 @@ function App() {
     }
 
     const handleMovieSave = (movie: Movie) => {
+        if (!movie.id) {
+            movie.id = Math.max(...movies.map(m => m.id!)) + 1
+            setMovies([...movies, movie])
+            setSelectedView(AppViews.MovieOverview)
+            return
+        }
         const updated = movies.map(m => {
             if (m.id === movie.id) {
                 return movie
