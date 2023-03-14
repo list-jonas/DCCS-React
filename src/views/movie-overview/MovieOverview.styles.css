@@ -1,0 +1,26 @@
+.movie-overview-root {
+    padding: 20px 0;
+}
+
+.movie-overview-button-container {
+    padding: 0 20px 20px 20px;
+}
+
+.movie-overview-item-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.movie-overview-header {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    align-items: center;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.movie-overview-header-column {
+    display: inline-flex;
+}

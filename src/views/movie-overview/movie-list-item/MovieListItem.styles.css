@@ -1,0 +1,36 @@
+.movie-list-item {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.movie-list-item:hover {
+    background-color: rgb(224, 215, 192);
+    cursor: pointer;
+}
+
+.movie-list-item:nth-of-type(even) {
+    background-color: rgb(224, 215, 192);
+}
+
+.movie-list-item-column {
+    display: inline-flex;
+}
+
+.movie-list-item-img {
+    height: 50px;
+    max-width: 40px;
+}
+
+.movie-list-item-icon {
+    cursor: pointer;
+    color: rgb(163, 119, 18);
+}
+
+.movie-list-item-icon-delete {
+    cursor: pointer;
+    color: darkred;
+}
+
