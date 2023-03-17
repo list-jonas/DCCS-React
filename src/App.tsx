@@ -69,13 +69,19 @@ function App() {
         setSelectedMovie(undefined)
     }
 
+    const handleMovieDelete = (id: number) => {
+        const updated = movies.filter(movie => movie.id !== id)
+        setMovies(updated)
+    }
+
     const renderSelectedView = () => {
         if (selectedView === AppViews.MovieOverview) {
             return <MovieOverview
                 movies={movies}
                 onFavouriteClick={handleFavouriteClick}
                 onWatchedClick={handleWatchedClick}
-                onEditMovie={handleMovieEdit} />
+                onEditMovie={handleMovieEdit}
+                onDeletedMovie={handleMovieDelete}/>
         } else if (selectedView === AppViews.MovieDetails) {
             return (
                 <MovieDetails

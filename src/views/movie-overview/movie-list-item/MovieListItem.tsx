@@ -9,10 +9,11 @@ interface MovieListItemProps {
     onFavouriteClick: (id: number) => void
     onWatchedClick: (id: number) => void
     onEdit: () => void
+    onDelete: (id: number) => void
 }
 
 const MovieListItem: React.FC<MovieListItemProps> = (props) => {
-    const { movie, orderNr, onFavouriteClick, onWatchedClick, onEdit} = props
+    const { movie, orderNr, onFavouriteClick, onWatchedClick, onEdit, onDelete} = props
 
     return (
         <div className="movie-list-item" onClick={onEdit}>
@@ -42,7 +43,10 @@ const MovieListItem: React.FC<MovieListItemProps> = (props) => {
                 </span>
             </div>
             <div className="movie-list-item-column" style={{ width: "40px" }}>
-                <span className="movie-list-item-icon-delete" onClick={e => {}}>
+                <span className="movie-list-item-icon-delete" onClick={e => {
+                    e.stopPropagation()
+                    movie.id && onDelete(movie.id)
+                }}>
                     <Delete />
                 </span>
             </div>

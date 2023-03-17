@@ -9,10 +9,11 @@ interface MovieOverviewProps {
     onFavouriteClick: (id: number) => void
     onWatchedClick: (id: number) => void
     onEditMovie: (movie?: Movie) => void
+    onDeletedMovie: (id: number) => void
 }
 
 const MovieOverview: React.FC<MovieOverviewProps> = (props) => {
-    const { movies, onFavouriteClick, onWatchedClick, onEditMovie } = props
+    const { movies, onFavouriteClick, onWatchedClick, onEditMovie, onDeletedMovie } = props
 
     return (
         <div className="movie-overview-root">
@@ -47,6 +48,7 @@ const MovieOverview: React.FC<MovieOverviewProps> = (props) => {
                             onFavouriteClick={onFavouriteClick}
                             onWatchedClick={onWatchedClick}
                             onEdit={() => onEditMovie(movie)}
+                            onDelete={onDeletedMovie}
                     />)
                 })}
             </div>
