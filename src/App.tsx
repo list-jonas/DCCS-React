@@ -5,7 +5,6 @@ import {Movie} from "./common/models/movie.model";
 import {genresMockData, moviesMockData} from "./common/mock-data";
 import MovieOverview from "./views/movie-overview/MovieOverview";
 import MovieDetails from "./views/movie-details/MovieDetails";
-import {Genre} from "./common/models/genre.model";
 
 export enum AppViews {
   MovieOverview = 1,
@@ -71,19 +70,19 @@ function App() {
     }
 
     const renderSelectedView = () => {
-        if (selectedView == AppViews.MovieOverview) {
+        if (selectedView === AppViews.MovieOverview) {
             return <MovieOverview
                 movies={movies}
                 onFavouriteClick={handleFavouriteClick}
                 onWatchedClick={handleWatchedClick}
                 onEditMovie={handleMovieEdit} />
-        } else if (selectedView == AppViews.MovieDetails) {
+        } else if (selectedView === AppViews.MovieDetails) {
             return (
                 <MovieDetails
                     movie={selectedMovie}
                     handleSave={handleMovieSave}
-                    handleCancel={handleMovieCancel}
                     genres={genresMockData}
+                    handleGoBack={handleMovieCancel}
                 />
             )
         }
